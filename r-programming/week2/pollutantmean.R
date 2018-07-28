@@ -39,7 +39,7 @@ pollutantmean <- function(directory, pollutant, id=1:332){
 
 ##test - please change directory
 
-dirTRAB <- c("C:/Users/Victor/R project/datasciencecoursera/r-programming/week2/specdata")
+dirTRAB <- c("C:/Users/.../datasciencecoursera/r-programming/week2/specdata")
 print (pollutantmean(dirTRAB, pollutant = "sulfate" , id = 1:10))
 print (pollutantmean(dirTRAB, pollutant = "nitrate" , id = 70:72))
 print (pollutantmean(dirTRAB, pollutant = "nitrate" , id = 23))
