@@ -1,4 +1,4 @@
-dirTRAB <- c("C:/Users/Victor/R project/datasciencecoursera/r-programming/week2/specdata")
+dirTRAB <- c("C:/Users/.../datasciencecoursera/r-programming/week2/specdata")
 
 complete <- function(directory, id = 1:332){
     # set directory
