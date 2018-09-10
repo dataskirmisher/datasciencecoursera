@@ -1,13 +1,13 @@
-directory <- "make sure to set the path"
+library(dplyr)
 
+directory <- "make sure to set the path"
 # set directory
 old_dir <- getwd()
 setwd(directory)
 
-###step1
+###Step 1 - Read
 
 # TRAIN
-
 x_train <- read.table("X_train.txt")
 dim(x_train)
 
@@ -20,7 +20,6 @@ dim(sub_train)
 table(sub_train)
 
 # TEST
-
 x_test <- read.table("X_test.txt")
 dim(x_test)
 
@@ -33,7 +32,6 @@ dim(sub_test)
 table(sub_test)
 
 # Binding 
-
 x_bind <- rbind(x_train,x_test)
 dim(x_bind)
 
@@ -46,8 +44,7 @@ dim(sub_bind)
 full_table <- cbind(sub_bind, y_bind, x_filter)
 dim(full_table)
 
-###step 2
-##
+### Step 2 - Extract 
 features_x <- read.table("features.txt")
 dim(features_x)
 
@@ -62,12 +59,10 @@ full_table <- cbind(sub_bind, y_bind, x_filter)
 dim(full_table)
 names(full_table)
 
-### Step 3 and 4
-
+### Step 3 and 4 - Descriptive  and Label
 #setting names on the table:
 x_names <- features_x[,2][target_feature_index]
 x_names <- as.character(x_names)
-
 
 names(full_table) <- c("subject","activity",x_names)
 
@@ -97,14 +92,12 @@ for(i in 1:6){
 #write out the tidy full_table
 write.table(full_table,"tidy_data.txt")
 
-
-## ---
+## Step 5 - Mean by Group
 means_table <- group_by(full_table,Subject,Activity)
 means_table <- means_table %>%  summarise_at(-(1:2),"mean")
 
 #write out the data set with the average of each variable
 write.table(means_table,"means_data.txt")
-
 
 #settin old dir
 setwd(old_dir)
